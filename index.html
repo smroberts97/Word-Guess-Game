@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    
+    <title>DISNEY ANIMAL GAME</title>
+
+<!--Links to css & fonts-->
+
+<link href="https://fonts.googleapis.com/css?family=Modak&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=ZCOOL+XiaoWei&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="assets/css/reset.css">
+<link rel="stylesheet" href="assets/css/style.css">
+
+</head>
+
+<body>
+    <div class="heading">
+        <h1>DISNEY ANIMALS</h1>
+    </div>
+
+    <div class="background">
+        <div class="container">
+
+            <h2>Press Any Key to Start! Guess the Disney Animal!</h2>
+        </div>
+                <img id="image" src="http://i.imgur.com/RXe43QN.jpg" width="40%" height="400">
+
+    </div>
+
+    <!--word that will be guessed-->
+    <div>
+        <h3 id="correctword">_ _ _ _ _</h3>
+    </div>
+
+    <div id="score">
+     <!--how many guesses are left-->   
+     <div class="scorecolumn">
+         <h3>Number of Guesses You Have Left:
+             <span id="guessesleft">
+
+             </span>
+         </h3>
+     </div>
+
+    </div>
+    
+    <!--how many wins-->
+    <div class="scorecolumn">
+        <h3>WINS:
+            <span id="wincount">
+
+            </span>
+        </h3>
+    </div>
+
+    <!--how many losses-->
+    <div class="scorecolumn">
+        <h3>LOSSES:
+            <span id="losscount">
+
+            </span>
+        </h3>
+    </div>
+
+    <!--the letters user guessed wrong-->
+    <div class="scorecolumn">
+        <h3>Wrong letter guesses:
+            <span id="userguesses">
+
+            </span>
+        </h3>
+    </div>
+
+<script src="assets/javascript/game.js">
+</script>
+
+</body>
+
+</html>
