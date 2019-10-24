@@ -5,28 +5,30 @@ body {
 }
 
 h1 {
-    font-size: 43px;
-    border: solid 5px black;
+    font-size: 60px;
+    color: red;
+    border: solid 5px blue;
     background: white;
     text-align: center;
     margin-top: 2%;
     margin-left: 10%;
+    margin-right: 10%;
     padding: 15px;
     font-family: 'Modak', cursive;
 }
 
 h2 {
-    font-size: 20px;
+    font-size: 30px;
+    color: darkgreen;
+    font: bold;
     padding: 10px;
     font-family: 'ZCOOL XiaoWei', serif;
 }
 
-img {
-    margin: 10px;
-}
 
 .scorecolumn {
-    font-size: 12px;
+    font-size: 40px;
+    text-align: center;
     padding: 5px;
     position: relative;
     border-top: blue 2px;
@@ -34,6 +36,7 @@ img {
     margin-bottom: 5px;
     font-family: 'ZCOOL XiaoWei', serif;
 }
+
 
 span {
     font-size: 15px;
@@ -61,9 +64,12 @@ span {
 
 #correctword {
     font-family: 'ZCOOL XiaoWei', serif;
-    font-size: 30px;
+    font-size: 50px;
+    color: blueviolet;
+    font: bold;
     margin-bottom: 10px;
     margin-top: 10px;
+    text-align: center;
 
 }
 
