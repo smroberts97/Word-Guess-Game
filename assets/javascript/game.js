@@ -1,6 +1,6 @@
 // set up the words to guess in an array
 
-var words: ["simba", "daisy", "bambi", "nemo", "tramp", "flounder", "dumbo"]
+var words = ["simba", "daisy", "bambi", "nemo", "tramp", "flounder", "dumbo"]
 
 //variable set up
 
@@ -29,7 +29,7 @@ var guessesLeft = 0;
 
 //Start the game
 
-function Game () {
+function Game() {
 //generate random words from array
     randomWord = words[Math.floor(Math.random() * words.length)];
 
@@ -40,11 +40,11 @@ function Game () {
     blanks = wordLetters.length;
 
 //loop to make blanks 
-    for (var i = 0; in < blanks; i++) {
+    for (var i = 0; i < blanks; i++) {
         blanksAndCorrect.push("_");
     }
 //blanks in html
-    documents.getElementById("correctword").innerHTML = " " + blanksAndCorrect.join(" ");
+    document.getElementById("correctword").innerHTML = " " + blanksAndCorrect.join(" ");
     
 //console
     console.log(randomWord);
@@ -190,7 +190,43 @@ function checkLetters(letter) {
     console.log(blanksAndCorrect)
 }
 
+//win or loss function
 
+function complete() {
+    console.log("wins:" + wins + "losses:" + losses + "guesses left:" + guessesLeft)
+
+//if win, show image   
+    if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+        wins++;
+        img()
+        reset()
+        document.getElementById("wincount").innerHTML = " " + losses;
+    }
+//if lose, alert and start over
+    else if (guessesLeft === 0) {
+        losses++;
+        reset()
+        alert("Sorry! Try again.");
+        document.getElementById("losscount").innerHTML = " " + guessesLeft;
+    }
+}
+
+//call the code, start the game. Fingers crossed this will work!
+
+Game()
+
+document.onkeyup = function (event) {
+    var guesses = String.fromCharCode(event.keyCode).toLowerCase();
+
+    checkLetters(guesses);
+
+    complete();
+
+    console.log(guesses);
+
+    document.getElementById("playerguesses").innerHTML = " " + wrongGuess.join(" ");
+
+}
 
 
 
