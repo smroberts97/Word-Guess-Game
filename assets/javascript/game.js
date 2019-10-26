@@ -23,7 +23,7 @@ var wrongGuess = [];
 
 var losses = 0;
 var wins = 0;
-var guessesLeft = 0;
+var guessesLeft = 8;
 
 //Functions
 
@@ -68,96 +68,54 @@ var dumbo = document.getElementById("dumbo");
 //functions to show images when correct word is filled in
 
 //simba
-function img() {
+// function img() {
 
-    if (randomWord === words[0]) {
-        daisy.pause();
-        bambi.pause();
-        nemo.pause();
-        tramp.pause();
-        flounder.pause();
-        dumbo.pause();
-        simba.show_image();
-        document.getElementById("image").src = "assets/images/simba.jpg";
-    }
+//     if (randomWord === words[0]) {
+//         simba.show_image();
+//         document.getElementById("image").src = "assets/images/simba.jpg";
+//     }
+// }
+// //daisy    
+// //    else if (randomWord === words[1]) {
+//         daisy.show_image();
+//         document.getElementById("image").src = "assets/images/daisy.png";
+//     }
 
-//daisy    
-    else if (randomWord === words[1]) {
-        simba.pause();
-        bambi.pause();
-        nemo.pause();
-        tramp.pause();
-        flounder.pause();
-        dumbo.pause();
-        daisy.show_image();
-        document.getElementById("image").src = "assets/images/daisy.png";
-    }
+// //bambi      
+//     else if (randomWord === words[2]) {
+//         bambi.show_image();
+//         document.getElementById("image").src = "assets/images/bambi.png";
+//     }    
 
-//bambi      
-    else if (randomWord === words[2]) {
-        simba.pause();
-        daisy.pause();
-        nemo.pause();
-        tramp.pause();
-        flounder.pause();
-        dumbo.pause();
-        bambi.show_image();
-        document.getElementById("image").src = "assets/images/bambi.png";
-    }    
+// //nemo
+//     else if (randomWord === words[3]) {
+//         nemo.show_image();
+//         document.getElementById("image").src = "assets/images/nemo.png";
+//     }  
 
-//nemo
-    else if (randomWord === words[3]) {
-        simba.pause();
-        daisy.pause();
-        bambi.pause();
-        tramp.pause();
-        flounder.pause();
-        dumbo.pause();
-        nemo.show_image();
-        document.getElementById("image").src = "assets/images/nemo.png";
-    }  
+// //tramp
+//     else if (randomWord === words[4]) {
+//         tramp.show_image();
+//         document.getElementById("image").src = "assets/images/nemo.png";
+//     }
 
-//tramp
-    else if (randomWord === words[4]) {
-        simba.pause();
-        daisy.pause();
-        bambi.pause();
-        nemo.pause();
-        flounder.pause();
-        dumbo.pause();
-        tramp.show_image();
-        document.getElementById("image").src = "assets/images/nemo.png";
-    }
+// //flounder
+//     else if (randomWord === words[5]) {
+//         flounder.show_image();
+//         document.getElementById("image").src = "assets/images/flounder.png";
+//     }
 
-//flounder
-    else if (randomWord === words[5]) {
-        simba.pause();
-        daisy.pause();
-        bambi.pause();
-        nemo.pause();
-        tramp.pause();
-        dumbo.pause();
-        flounder.show_image();
-        document.getElementById("image").src = "assets/images/flounder.png";
-    }
+// //dumbo
+//     else if (randomWord === words[6]) {
+//         dumbo.show_image();
+//         document.getElementById("image").src = "assets/images/dumbo.jpg";
+//     }
+// }
 
-//dumbo
-    else if (randomWord === words[6]) {
-        simba.pause();
-        daisy.pause();
-        bambi.pause();
-        nemo.pause();
-        tramp.pause();
-        flounder.pause();
-        dumbo.show_image();
-        document.getElementById("image").src = "assets/images/dumbo.jpg";
-    }
-}
-
-//start over function, reset the game; when user guessed 9 already, placeholder for wrongguess and blanks and correct
+//start over function, reset the game; when user guessed 8 already, placeholder for wrongguess and blanks and correct
 
 function reset() {
-    guessesLeft = 9;
+    guessesLeft = 8;
     wrongGuess = [];
     blanksAndCorrect = [];
     Game()
@@ -172,14 +130,14 @@ function checkLetters(letter) {
     var letterIsInWord = false;
 
     for (var i = 0; i < blanks; i++) {
-        if (randomWord[i] === letter) {
+        if (randomWord[i] == letter) {
             letterIsInWord = true;
         }
     }
 
     if (letterIsInWord) {
         for (var i = 0; i < blanks; i++) {
-            if (randomWord[i] === letter) {
+            if (randomWord[i] == letter) {
                 blanksAndCorrect[i] = letter;
             }
         }
@@ -193,22 +151,24 @@ function checkLetters(letter) {
 //win or loss function
 
 function complete() {
-    console.log("wins:" + wins + "losses:" + losses + "guesses left:" + guessesLeft)
+    console.log("wins:" + wins + "| losses:" + losses + "| guesses left:" + guessesLeft)
 
 //if win, show image   
-    if (lettersOfWord.toString() == blanksAndCorrect.toString()) {
+    if (wordLetters.toString() == blanksAndCorrect.toString()) {
         wins++;
-        img()
+        alert("YOU WIN!")
         reset()
-        document.getElementById("wincount").innerHTML = " " + losses;
+        document.getElementById("wincount").textContent = " " + wins;
     }
 //if lose, alert and start over
     else if (guessesLeft === 0) {
         losses++;
-        reset()
         alert("Sorry! Try again.");
-        document.getElementById("losscount").innerHTML = " " + guessesLeft;
+        reset();
+        document.getElementById("losscount").textContent = " " + losses;
     }
+    document.getElementById("correctword").innerHTML = " " + blanksAndCorrect.join(" ");
+    document.getElementById("guessesleft").innerHTML = " " + guessesLeft;
 }
 
 //call the code, start the game. Fingers crossed this will work!
@@ -224,10 +184,7 @@ document.onkeyup = function (event) {
 
     console.log(guesses);
 
-    document.getElementById("playerguesses").innerHTML = " " + wrongGuess.join(" ");
+    document.getElementById("userguesses").textContent = " " + wrongGuess.join(" ");
 
 }
-
-
-
 
